@@ -20,7 +20,8 @@
                 $jogador_b = 0;
                 $rodada = 0;
                 $saque = 0;
-                $saque_a = 0;
+                $saque20_a = 0;
+                $saque20_b = 0;
                 //jogador tem que chegar a 21 pontos
                 //minimo de 2 pontos de diferença do oponente
 
@@ -45,16 +46,33 @@
                        
                      }
                      
-                    if(($rodada % 6) == 0){
-                      $sacar = $sacado;
-                    }
-                    
                     if($jogador_a >= 20 && $jogador_b >= 20){
-                      echo $saque_a .' '. $saque_b;
+                    
+                      if($sacar == 'Jogador A'){
+                          $saque20_a++;
+                      }
+                      if($sacar == 'Jogador B'){
+                        $saque20_b++;
+                      }
                       
+                      if(($saque20_a % 3) == 0){
+                        $sacar = 'Jogador B';
+                        $saque_b++;
+                      }
+                      
+                      if(($saque20_b % 3) == 0){
+                        $sacar = 'Jogador A';
+                        $saque_a++;
+                      }
+                       
+                    }else{
+                      
+                     if(($rodada % 6) == 0){
+                       $sacar = $sacado;
+                     }
                     }
                     
-                   echo "$jogador_a : $jogador_b -> $sacar - $saque_a - $saque_b";
+                   echo "$jogador_a : $jogador_b -> $sacar ";
                    echo "</div>";
                 }
             ?>
